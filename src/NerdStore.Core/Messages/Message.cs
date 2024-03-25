@@ -2,11 +2,11 @@
 
 public abstract class Message
 {
-    public string MessageType { get; protected set; }
-    public Guid AggregateId { get; protected set; }
+    public Guid AggregateRoot { get; set; }
+    public DateTime DateTime { get; set; }
 
     protected Message()
     {
-        MessageType = GetType().Name;
+        DateTime = DateTime.Now;
     }
 }
