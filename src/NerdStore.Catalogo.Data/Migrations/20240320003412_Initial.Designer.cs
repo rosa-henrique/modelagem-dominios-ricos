@@ -11,7 +11,7 @@ using NerdStore.Catalogo.Data;
 
 namespace NerdStore.Catalogo.Data.Migrations
 {
-    [DbContext(typeof(CatalogContext))]
+    [DbContext(typeof(CatalogoContext))]
     [Migration("20240320003412_Initial")]
     partial class Initial
     {

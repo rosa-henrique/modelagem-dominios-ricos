@@ -10,7 +10,7 @@ using NerdStore.Catalogo.Data;
 
 namespace NerdStore.Catalogo.Data.Migrations
 {
-    [DbContext(typeof(CatalogContext))]
+    [DbContext(typeof(CatalogoContext))]
     partial class CatalogContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

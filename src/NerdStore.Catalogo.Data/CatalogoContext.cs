@@ -2,10 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using NerdStore.Catalogo.Domain;
 using NerdStore.Core.Data;
+using NerdStore.Core.Messages;
 
 namespace NerdStore.Catalogo.Data;
 
-public class CatalogContext(DbContextOptions<CatalogContext> options) : DbContext(options), IUnitOfWork
+public class CatalogoContext(DbContextOptions<CatalogoContext> options) : DbContext(options), IUnitOfWork
 {
     public DbSet<Produto> Produtos { get; set; }
     public DbSet<Categoria> Categorias { get; set; }
@@ -16,7 +17,9 @@ public class CatalogContext(DbContextOptions<CatalogContext> options) : DbContex
             e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
             property.SetColumnType("varchar(100)");
 
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(CatalogContext).Assembly);
+        modelBuilder.Ignore<Event>();
+
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(CatalogoContext).Assembly);
     }
 
     public async Task<bool> Commit()
